@@ -1,6 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as dotenv from 'dotenv';
+
+dotenv.config(); 
 
 
 async function bootstrap() {
@@ -9,7 +12,6 @@ async function bootstrap() {
   const config = new DocumentBuilder()
   .setTitle('Delivery Price Calculator')
   .setVersion('1.0')
-  .addTag('Auth')
   .build();
 
   const document = SwaggerModule.createDocument(app, config);
