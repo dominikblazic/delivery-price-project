@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CalculatorDto } from './dto';
 
@@ -7,6 +7,11 @@ export class CalculatorService {
     constructor(private prisma: PrismaService){}
 
     async createCalculator(dto: CalculatorDto){
+        const doesCalculatorExist = await this.prisma.calculator.findFirst();
+
+        if (doesCalculatorExist) {
+            throw new ConflictException('A calculator already exists. Only one calculator is allowed.');
+        }
         const { distanceIntervals, ...calculatorData } = dto;
 
         const calculator = await this.prisma.calculator.create({
@@ -23,27 +28,8 @@ export class CalculatorService {
         return calculator;
     }
 
-    async getCalculatorById(id: number) {
-        const calculator = await this.prisma.calculator.findUnique({
-          where: { id },
-          include: { distanceIntervals: true },
-        });
-    
-        if (!calculator) {
-          throw new NotFoundException(`Calculator with ID ${id} not found`);
-        }
-    
-        return calculator;
-      }
-
     async updateCalculator(id: number, calculatorDto: CalculatorDto) {
-        const calculator = await this.prisma.calculator.findUnique({
-          where: { id },
-        });
-    
-        if (!calculator) {
-          throw new NotFoundException(`Calculator with ID ${id} not found`);
-        }
+        this.getCalculatorById(id);
     
         const { distanceIntervals, ...calculatorData } = calculatorDto;
     
@@ -61,5 +47,18 @@ export class CalculatorService {
         });
     
         return updatedCalculator;
+      }
+
+      private async getCalculatorById(id: number) {
+        const calculator = await this.prisma.calculator.findUnique({
+          where: { id },
+          include: { distanceIntervals: true },
+        });
+    
+        if (!calculator) {
+          throw new NotFoundException(`Calculator with ID ${id} not found`);
+        }
+    
+        return calculator;
       }
 }
