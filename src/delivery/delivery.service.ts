@@ -31,10 +31,10 @@ export class DeliveryService {
     }
 
      private async calculateDeliveryPrice(deliveryRequestData: CreateDeliveryRequestDto): Promise<Decimal> {
-        const distanceInKm = new Decimal(deliveryRequestData.deliveryDistanceInKm);
         const calculator = await this.calculatorService.getCalculator();
 
         let deliveryPrice = calculator.basePrice;
+        const distanceInKm = new Decimal(deliveryRequestData.deliveryDistanceInKm);
 
         for (const interval of calculator?.distanceIntervals) {
           if (distanceInKm.gt(interval.distanceFromKm) && distanceInKm.lte(interval.distanceToKm)) {
@@ -44,7 +44,17 @@ export class DeliveryService {
         }
 
         deliveryPrice = deliveryPrice.add(calculator.additionalPackagePrice.mul(deliveryRequestData.numberOfPackages - 1))
+        
+        if (this.isWeekend(deliveryRequestData.deliveryDate)) {
+          const weekendIncrease = deliveryPrice.mul(0.1);
+          deliveryPrice = deliveryPrice.add(weekendIncrease);
+        }
 
         return deliveryPrice;
+    }
+
+    private isWeekend(deliveryDate: Date): boolean {
+      const dayOfWeek = new Date(deliveryDate).getDay();
+      return dayOfWeek === 0 || dayOfWeek === 6;
     }
 }

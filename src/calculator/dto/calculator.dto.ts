@@ -3,11 +3,11 @@ import { DistanceIntervalDto } from './distance-interval.dto';
 
 export class CalculatorDto {
     @ApiProperty()
-    basePrice: number;
+    readonly basePrice: number;
 
     @ApiProperty()
-    additionalPackagePrice: number;
+    readonly additionalPackagePrice: number;
 
     @ApiProperty({ type: [DistanceIntervalDto] })
-    distanceIntervals: DistanceIntervalDto[];
+    readonly distanceIntervals: DistanceIntervalDto[];
 }

@@ -2,11 +2,11 @@ import { ApiProperty } from "@nestjs/swagger";
 
 export class DistanceIntervalDto {
     @ApiProperty()
-    distanceFromKm: number;
+    readonly distanceFromKm: number;
   
     @ApiProperty()
-    distanceToKm: number;
+    readonly distanceToKm: number;
   
     @ApiProperty()
-    pricePerKm: number;
+    readonly pricePerKm: number;
   }
