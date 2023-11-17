@@ -31,7 +31,7 @@ model DistanceInterval {
 model DeliveryRequest {
   id Int @id @default(autoincrement())
   createdAt DateTime @default(now())
-  deliveryDistance Int
+  deliveryDistance Decimal @db.Decimal(9, 2)
   deliveryDate DateTime
   numberOfPackages Int
   firstName String

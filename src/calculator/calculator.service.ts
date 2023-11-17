@@ -29,7 +29,7 @@ export class CalculatorService {
     }
 
     async updateCalculator(id: number, calculatorDto: CalculatorDto) {
-        this.getCalculatorById(id);
+        this.getCalculator();
     
         const { distanceIntervals, ...calculatorData } = calculatorDto;
     
@@ -37,7 +37,6 @@ export class CalculatorService {
           where: { id },
           data: {
             ...calculatorData,
-            updatedAt: new Date(Date.now()),
             distanceIntervals: {
               deleteMany: {},
               createMany: {
@@ -48,18 +47,17 @@ export class CalculatorService {
         });
     
         return updatedCalculator;
-      }
+    }
 
-      private async getCalculatorById(id: number) {
-        const calculator = await this.prisma.calculator.findUnique({
-          where: { id },
+    async getCalculator() {
+        const calculator = await this.prisma.calculator.findFirst({
           include: { distanceIntervals: true },
         });
     
         if (!calculator) {
-          throw new NotFoundException(`Calculator with ID ${id} not found`);
+          throw new NotFoundException(`Calculator not found`);
         }
     
         return calculator;
-      }
+    }
 }
