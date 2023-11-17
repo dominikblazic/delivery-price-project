@@ -8,7 +8,8 @@ dotenv.config();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  app.setGlobalPrefix('api');
+  
   const config = new DocumentBuilder()
   .setTitle('Delivery Price Calculator')
   .setVersion('1.0')
