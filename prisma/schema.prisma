@@ -27,3 +27,16 @@ model DistanceInterval {
   calculator Calculator @relation(fields: [calculatorId], references: [id])
   calculatorId Int
 }
+
+model DeliveryRequest {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  deliveryDistance Int
+  deliveryDate DateTime
+  numberOfPackages Int
+  firstName String
+  lastName String
+  email String
+  phoneNumber String
+  totalPrice Decimal @db.Decimal(9, 2)
+}

@@ -37,6 +37,7 @@ export class CalculatorService {
           where: { id },
           data: {
             ...calculatorData,
+            updatedAt: new Date(Date.now()),
             distanceIntervals: {
               deleteMany: {},
               createMany: {
