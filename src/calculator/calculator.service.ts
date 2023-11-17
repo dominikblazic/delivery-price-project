@@ -35,4 +35,31 @@ export class CalculatorService {
     
         return calculator;
       }
+
+    async updateCalculator(id: number, calculatorDto: CalculatorDto) {
+        const calculator = await this.prisma.calculator.findUnique({
+          where: { id },
+        });
+    
+        if (!calculator) {
+          throw new NotFoundException(`Calculator with ID ${id} not found`);
+        }
+    
+        const { distanceIntervals, ...calculatorData } = calculatorDto;
+    
+        const updatedCalculator = await this.prisma.calculator.update({
+          where: { id },
+          data: {
+            ...calculatorData,
+            distanceIntervals: {
+              deleteMany: {},
+              createMany: {
+                data: distanceIntervals,
+              },
+            },
+          },
+        });
+    
+        return updatedCalculator;
+      }
 }
