@@ -14,7 +14,7 @@ export class EmailService {
       auth: {
         user: this.configService.get<string>('email.username'),
         pass: this.configService.get<string>('email.password'),
-        authMethod: 'LOGIN',
+        method: 'LOGIN',
       },
     });
   }
