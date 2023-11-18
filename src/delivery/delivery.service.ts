@@ -45,7 +45,7 @@ export class DeliveryService {
 
         deliveryPrice = deliveryPrice.add(calculator.additionalPackagePrice.mul(deliveryRequestData.numberOfPackages - 1))
         
-        if (this.isWeekend(deliveryRequestData.deliveryDate)) {
+        if (this.isWeekend(new Date(deliveryRequestData.deliveryDate))) {
           const weekendIncrease = deliveryPrice.mul(0.1);
           deliveryPrice = deliveryPrice.add(weekendIncrease);
         }

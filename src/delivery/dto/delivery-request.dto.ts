@@ -5,7 +5,7 @@ export class CreateDeliveryRequestDto {
   readonly deliveryDistanceInKm: number;
 
   @ApiProperty()
-  readonly deliveryDate: Date;
+  readonly deliveryDate: string;
 
   @ApiProperty()
   readonly numberOfPackages: number;
