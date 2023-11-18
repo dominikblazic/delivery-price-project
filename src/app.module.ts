@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
-import { ConfigModule, ConfigService} from '@nestjs/config';
+import { UsersModule } from './models/users/users.module';
+import { ConfigModule} from '@nestjs/config';
 import { PrismaModule } from './prisma/prisma.module';
-import { CalculatorModule } from './calculator/calculator.module';
-import { JwtModule } from '@nestjs/jwt';
-import { DeliveryModule } from './delivery/delivery.module';
+import { CalculatorModule } from './models/calculators/calculator.module';
+import { DeliveryModule } from './models/deliveries/delivery.module';
 
 @Module({
   imports: [

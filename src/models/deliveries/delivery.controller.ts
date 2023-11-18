@@ -1,6 +1,6 @@
 import { Body, Controller, Post, UsePipes } from '@nestjs/common';
 import { DeliveryService } from './delivery.service';
-import { CreateDeliveryRequestDto } from './dto';
+import { CreateDeliveryRequestDto } from './dtos';
 import { Decimal } from '@prisma/client/runtime/library';
 import { ApiTags } from '@nestjs/swagger';
 import { DeliveryRequestValidationPipe } from './pipes/delivery-request.pipe';

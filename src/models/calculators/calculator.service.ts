@@ -1,6 +1,6 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { CalculatorDto } from './dto';
+import { CalculatorDto } from './dtos';
 
 @Injectable()
 export class CalculatorService {

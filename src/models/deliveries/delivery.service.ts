@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { CalculatorService } from 'src/calculator/calculator.service';
+import { CalculatorService } from 'src/models/calculators/calculator.service';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { CreateDeliveryRequestDto } from './dto';
+import { CreateDeliveryRequestDto } from './dtos';
 import { Decimal } from '@prisma/client/runtime/library';
 
 @Injectable()
