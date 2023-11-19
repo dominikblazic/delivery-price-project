@@ -11,7 +11,7 @@ This is a PoC for a new package delivery platform.
 ## Setup:
 To setup the application all that is needed to do is to add the *.env* file to the root of the folder. The structure of the file should be setup and filled with corresponding values based on the environment in this way: 
 
-**#Database Configuration**
+**#Database Configuration**  
 POSTGRES_USER=  
 POSTGRES_PASSWORD=  
 POSTGRES_NAME=  
@@ -19,14 +19,14 @@ DATABASE_URL=''
 PGADMIN_EMAIL=  
 PGADMIN_PASSWORD=  
 
-**#JWT Configuration**
+**#JWT Configuration**  
 JWT_SECRET=  
  
-**#Admin Configuration**
+**#Admin Configuration**  
 ADMIN_USERNAME=  
 ADMIN_PASSWORD=  
 
-**#Email SMTP Configuration**
+**#Email SMTP Configuration**  
 EMAIL_USERNAME=  
 EMAIL_PASSWORD=  
 
