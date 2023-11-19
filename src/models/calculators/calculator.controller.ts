@@ -11,6 +11,14 @@ export class CalculatorController {
 
   @ApiBearerAuth() 
   @UseGuards(JwtAuthGuard)
+  @Get()
+  async getCalculator() {
+    const calculator = await this.calculatorService.getCalculator();
+    return calculator;
+  }  
+
+  @ApiBearerAuth() 
+  @UseGuards(JwtAuthGuard)
   @Post()
   async createCalculator(@Body() calculatorDto: CalculatorDto) {
     const calculator = await this.calculatorService.createCalculator(calculatorDto);
