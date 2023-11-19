@@ -8,7 +8,6 @@ import { JwtAuthGuard } from 'src/auth/auth.guard';
 import { mockConfigService, mockJwtService } from '../common/mocks';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
-import { HttpStatus } from '@nestjs/common';
 
 describe('CalculatorController', () => {
     let controller: CalculatorController;
