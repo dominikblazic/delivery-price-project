@@ -30,9 +30,9 @@ export const mockedCalculator = {
 
 
 
-export const createMockCalculatorDto = (): CalculatorDto => {
+export const createMockCalculatorDto = (basePrice: number = 10): CalculatorDto => {
     return {
-      basePrice: 10,
+      basePrice: basePrice,
       additionalPackagePrice: 5,
       distanceIntervals: createMockDistanceIntervalDto(), 
     };
