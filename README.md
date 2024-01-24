@@ -1,11 +1,14 @@
 
-# Delivery price calculator - PoC
+# Simple NodeJS API 
 
-This is a PoC for a new package delivery platform. 
+As a seasoned .NET Backend engineer, I wanted to familiarize myself with NodeJS technologies and how they are structured to have a deeper understanding of its architecture and usage. 
+I have created a simple project that calculates delivery prices based on different inputs. 
 
 ## Core technologies used: 
 - Node.js (Nest.js)
-- PostgreSQL
+- Typescript
+- Database (PostgreSQL)
+- Documentation (Swagger)
 - Docker
 
 ## Setup:
@@ -20,15 +23,15 @@ PGADMIN_EMAIL=
 PGADMIN_PASSWORD=  
 
 **#JWT Configuration**  
-JWT_SECRET=  
+JWT_SECRET=''  
  
 **#Admin Configuration**  
-ADMIN_USERNAME=  
-ADMIN_PASSWORD=  
+ADMIN_USERNAME=''  
+ADMIN_PASSWORD=''  
 
 **#Email SMTP Configuration**  
-EMAIL_USERNAME=  
-EMAIL_PASSWORD=  
+EMAIL_USERNAME=''  
+EMAIL_PASSWORD=''  
 
 Afterwards in terminal, in the root of the project just run *docker compose up* and the app should be up and running. 
 The API can be reached at the https://localhost:3000/swagger and is ready to recieve requests. 
